@@ -176,7 +176,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-labelledby="cameraModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content p-3">

@@ -87,7 +87,9 @@
                                         <td>{{ $i + 1 }}</td>
                                         <td>{{ $jadwal->makul->nama ?? '-' }}</td>
                                         <td>
-                                        <a href="{{ route('absensi.create', ['id_jadwal' => $jadwal->id]) }}" class="btn btn-sm btn-primary">Absen</a>
+                                            @auth('web')
+                                                <a href="{{ route('absensi.create', ['id_jadwal' => $jadwal->id]) }}" class="btn btn-sm btn-primary">Absen</a>
+                                            @endauth
                                         </td>
                                     </tr>
                                 @endforeach

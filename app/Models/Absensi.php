@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Absensi extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'absensi';
-
     protected $fillable = [
         'id_users',
         'id_jadwal',
@@ -33,5 +34,7 @@ class Absensi extends Model
         return $this->belongsTo(Makul::class, 'id_makul');
     }
     
-    public $timestamps = false;
+    
+
+    
 }

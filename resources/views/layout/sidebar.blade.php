@@ -37,10 +37,10 @@
         Menu
     </div>
 
-    <li class="nav-item {{ request()->routeIs('jadwals') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('jadwals') }}">
-            <i class="fas fa-calendar-alt"></i>
-            <span>Jadwal</span></a>
+    <li class="nav-item {{ request()->routeIs('kelas') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('kelas') }}">
+            <i class="fas fa-building"></i>
+            <span>Kelas</span></a>
     </li>
 
     <li class="nav-item {{ request()->routeIs('matakuliah') ? 'active' : '' }}">
@@ -48,11 +48,11 @@
             <i class="fas fa-book"></i>
             <span>MataKuliah</span></a>
     </li>
-
-    <li class="nav-item {{ request()->routeIs('kelas') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('kelas') }}">
-            <i class="fas fa-building"></i>
-            <span>Kelas</span></a>
+    
+    <li class="nav-item {{ request()->routeIs('jadwals') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('jadwals') }}">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Jadwal</span></a>
     </li>
     
     <li class="nav-item {{ request()->routeIs('dataAbsensi') ? 'active' : '' }}">

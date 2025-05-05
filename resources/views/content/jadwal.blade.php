@@ -82,7 +82,23 @@
                             </tbody>
                         </table>
                     </div>
-           
+                    <nav aria-label="Pagination" class="mt-4 d-flex justify-content-center">
+                      <ul class="pagination">
+                          <li class="page-item {{ $jadwals->onFirstPage() ? 'disabled' : '' }}">
+                              <a class="page-link" href="{{ $jadwals->previousPageUrl() }}" tabindex="-1" aria-disabled="{{ $jadwals->onFirstPage() ? 'true' : 'false' }}">Previous</a>
+                          </li>
+
+                          @foreach ($jadwals->getUrlRange(1, $jadwals->lastPage()) as $page => $url)
+                              <li class="page-item {{ $page == $jadwals->currentPage() ? 'active' : '' }}">
+                                  <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                              </li>
+                          @endforeach
+
+                          <li class="page-item {{ $jadwals->hasMorePages() ? '' : 'disabled' }}">
+                              <a class="page-link" href="{{ $jadwals->nextPageUrl() }}" aria-disabled="{{ $jadwals->hasMorePages() ? 'false' : 'true' }}">Next</a>
+                          </li>
+                      </ul>
+                  </nav>
                 </div>
             </div>
         </div>
@@ -111,7 +127,8 @@
                 <option value="Rabu">Rabu</option>
                 <option value="Kamis">Kamis</option>
                 <option value="Jumat">Jumat</option>
-                <option value="Jumat">Sabtu</option>
+                <option value="Sabtu">Sabtu</option>
+                <option value="Minggu">Minggu</option>
               </select>
             </div>
             <div class="col">

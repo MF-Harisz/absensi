@@ -32,7 +32,6 @@ Route::get('/dashboard', [JadwalController::class, 'dashboard'])
     ->middleware('auth:admin,web,dosen')
     ->name('dashboard');
 
-
 Route::get('/matakuliah', [MatakuliahController::class, 'index']
 )->middleware('auth:admin,web,dosen')->name('matakuliah');
 Route::get('/makul/{id}/edit', [MatakuliahController::class, 'edit'])->name('makul.edit');
@@ -73,7 +72,9 @@ Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwa
 Route::get('/absensi', [AbsensiController::class, 'index']
 )->middleware('auth:admin,web,dosen')->name('absensi');
 Route::post('/absensi', [AbsensiController::class, 'store'])->name('absensi.store');
-Route::get('/data-absensi', [AbsensiController::class, 'dataAbsensi'])->name('dataAbsensi');
+Route::get('/data-absensi', [AbsensiController::class, 'dataAbsensi']
+)->middleware('auth:admin,web,dosen')->name('dataAbsensi');
 
 Route::get('/absensi/{id_jadwal}', [AbsensiController::class, 'create'])->name('absensi.create');
+Route::get('/data-absensi/table', [AbsensiController::class, 'table'])->name('dataAbsensi.table');
 

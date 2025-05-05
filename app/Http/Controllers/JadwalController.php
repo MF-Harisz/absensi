@@ -15,7 +15,7 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        $jadwals = Jadwal::with(['kelas', 'makul.dosen'])->get();
+        $jadwals = Jadwal::with(['kelas', 'makul.dosen'])->paginate(10);
         $kelas = Kelas::all();
         $makul = Makul::with('dosen')->get();
         $dosen = Dosen::all();
@@ -32,7 +32,7 @@ class JadwalController extends Controller
 
         $jadwalsQuery = Jadwal::with(['kelas', 'makul.dosen'])->where('hari', $hariIni);
 
-        if (Auth::guard('admin')->check()) {
+        if (Auth::guard('admin')->check() || Auth::guard('dosen')->check()) {
             $jadwals = $jadwalsQuery->get();
         } elseif (Auth::guard('web')->check()) {
             $semesterUser = Auth::guard('web')->user()->semester;
@@ -40,11 +40,6 @@ class JadwalController extends Controller
                 ->whereHas('makul', function ($query) use ($semesterUser) {
                     $query->where('semester', $semesterUser);
                 })->get();
-        } elseif (Auth::guard('dosen')->check()) {
-            $idDosen = Auth::guard('dosen')->user()->id;
-            $jadwals = $jadwalsQuery
-                ->where('id_dosen', $idDosen)
-                ->get();
         } else {
             $jadwals = collect();
         }
